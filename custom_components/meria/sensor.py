@@ -34,7 +34,7 @@ async def async_setup_entry(
     async_add_entities(lending_entities, True)
 
 
-class MeriaLendingSensor(Entity):
+class MeriaLendingSensor(SensorEntity):
     def __init__(self, entry_id, lending_data) -> None:
         self._entry_id = entry_id
         self._lending_data = lending_data
