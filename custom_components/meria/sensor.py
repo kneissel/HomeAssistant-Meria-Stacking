@@ -54,7 +54,11 @@ class MeriaLendingSensor(Entity):
 
     @property
     def device_class(self):
-        return DEVICE_CLASS_MONETARY
+        return SensorDeviceClass.MONETARY
+
+    @property
+    def state_class(self):
+        return SensorStateClass.MEASUREMENT
 
     @property
     def unit_of_measurement(self):
