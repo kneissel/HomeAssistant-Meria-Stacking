@@ -1,0 +1,18 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Device is already configured"
+        },
+        "error": {
+            "invalid_api_key": "Clé d'API invalide",
+            "unknown": "Erreur inconnue"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "Clé d'API"
+                }
+            }
+        }
+    }
+}
