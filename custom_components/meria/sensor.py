@@ -3,7 +3,7 @@ from homeassistant.components.sensor import (
     SensorEntity,
     SensorStateClass,
 )
-from homeassistant.const import STATE_UNKNOWN, DEVICE_CLASS_MONETARY
+from homeassistant.const import STATE_UNKNOWN, SensorDeviceClass.MONETARY
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
@@ -68,7 +68,7 @@ class MeriaStakingSensor(SensorEntity):
         api_client = self.hass.data[DOMAIN][self._entry_id]
 
         try:
-            # Appelez la méthode pour obtenir les dernières données du prêt
+            # Appelez la méthode pour obtenir les dernières données du staking
             new_data = await api_client.staking(self._staking_data["currencyCode"])
 
             # Mettez à jour l'état de l'entité en fonction des nouvelles données
