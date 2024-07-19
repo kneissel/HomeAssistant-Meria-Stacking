@@ -20,29 +20,29 @@ async def async_setup_entry(
 ) -> None:
     """Set up the sensor platform."""
 
-    lending_entities = []
+    staking_entities = []
 
     api_client = hass.data[DOMAIN][entry.entry_id]
 
     # Utilisez api_client pour créer des entités ou effectuer d'autres opérations.
-    lendings_data = await api_client.lendings()
+    stakings_data = await api_client.stakings()
 
-    for lending_data in lendings_data:
-        lending_entity = MeriaLendingSensor(entry.entry_id, lending_data)
-        lending_entities.append(lending_entity)
+    for staking_data in stakings_data:
+        staking_entity = MeriaStakingSensor(entry.entry_id, staking_data)
+        staking_entities.append(staking_entity)
 
-    async_add_entities(lending_entities, True)
+    async_add_entities(staking_entities, True)
 
 
-class MeriaLendingSensor(SensorEntity):
-    def __init__(self, entry_id, lending_data) -> None:
+class MeriaStakingSensor(SensorEntity):
+    def __init__(self, entry_id, staking_data) -> None:
         self._entry_id = entry_id
-        self._lending_data = lending_data
+        self._staking_data = staking_data
         self._state = STATE_UNKNOWN
 
     @property
     def name(self):
-        return f"Lending {self._lending_data['currencyCode']}"
+        return f"Staking {self._staking_data['currencyCode']}"
 
     @property
     def state(self):
@@ -50,7 +50,7 @@ class MeriaLendingSensor(SensorEntity):
 
     @property
     def unique_id(self):
-        return f"lending_{self._lending_data['currencyCode']}"
+        return f"staking_{self._staking_data['currencyCode']}"
 
     @property
     def device_class(self):
@@ -62,14 +62,14 @@ class MeriaLendingSensor(SensorEntity):
 
     @property
     def unit_of_measurement(self):
-        return self._lending_data["currencyCode"]
+        return self._staking_data["currencyCode"]
 
     async def async_update(self):
         api_client = self.hass.data[DOMAIN][self._entry_id]
 
         try:
             # Appelez la méthode pour obtenir les dernières données du prêt
-            new_data = await api_client.lending(self._lending_data["currencyCode"])
+            new_data = await api_client.staking(self._staking_data["currencyCode"])
 
             # Mettez à jour l'état de l'entité en fonction des nouvelles données
             self._state = new_data["amount"]
