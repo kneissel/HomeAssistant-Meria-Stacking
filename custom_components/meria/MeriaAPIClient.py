@@ -29,7 +29,7 @@ class MeriaAPIClient:
                 data = await response.json()
                 return data["data"]
 
-    async def lending(self, currencyCode: str) -> dict:
+    async def staking(self, currencyCode: str) -> dict:
         headers = {
             "API-KEY": self.api_key,
         }
