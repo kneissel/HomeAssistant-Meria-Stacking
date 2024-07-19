@@ -17,11 +17,11 @@ class MeriaAPIClient:
                 data = await response.json()
                 return data["success"]
 
-    async def lendings(self) -> list:
+    async def stakings(self) -> list:
         headers = {
             "API-KEY": self.api_key,
         }
-        endpoint = f"{API_BASE_URL}/lendings"
+        endpoint = f"{API_BASE_URL}/stakings"
 
         async with aiohttp.ClientSession() as session:
             async with session.get(endpoint, headers=headers) as response:
@@ -33,7 +33,7 @@ class MeriaAPIClient:
         headers = {
             "API-KEY": self.api_key,
         }
-        endpoint = f"{API_BASE_URL}/lendings/{currencyCode}"
+        endpoint = f"{API_BASE_URL}/stakings/{currencyCode}"
 
         async with aiohttp.ClientSession() as session:
             async with session.get(endpoint, headers=headers) as response:
