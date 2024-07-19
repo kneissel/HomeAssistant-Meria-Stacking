@@ -1,1 +1,1 @@
-Meria Stacking
+Meria Staking
