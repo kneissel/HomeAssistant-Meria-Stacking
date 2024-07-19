@@ -3,7 +3,7 @@ from homeassistant.components.sensor import (
     SensorEntity,
     SensorStateClass,
 )
-from homeassistant.const import STATE_UNKNOWN, SensorDeviceClass.MONETARY
+from homeassistant.const import STATE_UNKNOWN, DEVICE_CLASS_MONETARY
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
