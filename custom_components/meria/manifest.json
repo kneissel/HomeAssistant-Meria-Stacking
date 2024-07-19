@@ -1,6 +1,6 @@
 {
-  "domain": "meria",
-  "name": "Meria",
+  "domain": "meria-staking",
+  "name": "Meria Staking",
   "version": "1.0.1",
   "codeowners": [
     "@kneissel"
